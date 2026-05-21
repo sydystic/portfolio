@@ -39,7 +39,7 @@ const Home = () => (
     }}>
       i build things that occasionally work, take photos of clouds nobody asked
       for, and have a gym membership that functions primarily as a source of guilt.
-      based in mumbai. surviving on coffee and 3am clarity.
+      based in mumbai. surviving on diet coke.
     </p>
 
     {/* status pills */}
