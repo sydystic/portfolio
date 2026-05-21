@@ -1,126 +1,186 @@
-import React, { useState } from 'react';
-import Navigation from './components/Navigation';
+import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Thoughts from './pages/Thoughts';
-import Photos from './pages/Photos';
+import Blog from './pages/Blog';
+
+type Page = 'home' | 'projects' | 'thoughts' | 'blog';
+
+const NAV_ITEMS: { id: Page; label: string }[] = [
+  { id: 'home', label: 'home' },
+  { id: 'projects', label: 'projects' },
+  { id: 'thoughts', label: 'thoughts' },
+  { id: 'blog', label: 'blog' },
+];
 
 const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [page, setPage] = useState<Page>('home');
+  const [visible, setVisible] = useState(true);
 
-  const renderContent = () => {
-    switch (activeSection) {
-      case 'home':
-        return <Home />;
-      case 'work':
-        return <Projects />;
-      case 'thoughts':
-        return <Thoughts />;
-      case 'photos':
-        return <Photos />;
-      default:
-        return <Home />;
-    }
+  const navigate = (next: Page) => {
+    if (next === page) return;
+    setVisible(false);
+    setTimeout(() => {
+      setPage(next);
+      setVisible(true);
+    }, 120);
   };
 
   return (
-    <div className="min-h-screen bg-stone-50" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-      <div className="flex flex-col lg:flex-row">
-        {/* Mobile header */}
-        <div className="lg:hidden bg-stone-100 border-b border-stone-200 p-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-stone-800 font-medium italic">digital whatever</p>
-            </div>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-stone-600 hover:text-stone-800 transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
+    <>
+      {/* ── Google Fonts ── */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+          --mono: 'DM Mono', monospace;
+          --serif: 'Playfair Display', serif;
+          --ink:  #1a1a18;
+          --ink2: #5a5a56;
+          --ink3: #9a9a94;
+          --surface: #fafaf8;
+          --surface2: #f2f1ec;
+          --border: rgba(0,0,0,0.08);
+          --border2: rgba(0,0,0,0.14);
+        }
+
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --ink:  #e8e8e0;
+            --ink2: #9a9a92;
+            --ink3: #5a5a54;
+            --surface: #141412;
+            --surface2: #1e1e1a;
+            --border: rgba(255,255,255,0.07);
+            --border2: rgba(255,255,255,0.13);
+          }
+        }
+
+        body {
+          font-family: var(--mono);
+          background: var(--surface);
+          color: var(--ink);
+          min-height: 100vh;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; }
+
+        ::selection { background: var(--ink); color: var(--surface); }
+      `}</style>
+
+      <div style={{
+        maxWidth: 680,
+        margin: '0 auto',
+        padding: '0 24px',
+      }}>
+        {/* ── Nav ── */}
+        <nav style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '28px 0 24px',
+          borderBottom: `0.5px solid var(--border2)`,
+          marginBottom: 40,
+        }}>
+          <NameTag />
+
+          <div style={{ display: 'flex' }} role="tablist">
+            {NAV_ITEMS.map((item, i) => (
+              <button
+                key={item.id}
+                role="tab"
+                aria-selected={page === item.id}
+                onClick={() => navigate(item.id)}
+                style={{
+                  background: page === item.id ? 'var(--surface2)' : 'transparent',
+                  border: `0.5px solid ${page === item.id ? 'var(--border2)' : 'transparent'}`,
+                  borderRadius: i === 0
+                    ? '6px 0 0 6px'
+                    : i === NAV_ITEMS.length - 1
+                    ? '0 6px 6px 0'
+                    : 0,
+                  padding: '6px 13px',
+                  fontFamily: 'var(--mono)',
+                  fontSize: 11,
+                  color: page === item.id ? 'var(--ink)' : 'var(--ink2)',
+                  cursor: 'pointer',
+                  letterSpacing: '0.04em',
+                  transition: 'all 0.15s',
+                }}
+                onMouseEnter={e => {
+                  if (page !== item.id) {
+                    (e.currentTarget as HTMLButtonElement).style.color = 'var(--ink)';
+                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--surface2)';
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (page !== item.id) {
+                    (e.currentTarget as HTMLButtonElement).style.color = 'var(--ink2)';
+                    (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
+                  }
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
+        </nav>
 
-          {/* Mobile menu */}
-          {mobileMenuOpen && (
-            <div className="mt-4 pb-4 border-t border-stone-200 pt-4">
-              <nav className="flex flex-col space-y-3">
-                {['home', 'work', 'thoughts', 'photos'].map((section) => (
-                  <button
-                    key={section}
-                    onClick={() => {
-                      setActiveSection(section);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`text-left text-lg font-light transition-all duration-300 ${
-                      activeSection === section
-                        ? 'text-stone-800 font-medium'
-                        : 'text-stone-600 hover:text-stone-700'
-                    }`}
-                  >
-                    {section}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          )}
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:block">
-          <Navigation activeSection={activeSection} setActiveSection={setActiveSection} />
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8 bg-stone-50 overflow-y-auto">
-          <div className="max-w-4xl mx-auto lg:max-w-2xl lg:mx-0">
-            <div
-              key={activeSection}
-              className="transition-opacity duration-300"
-            >
-              {renderContent()}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="mt-12 lg:mt-16 pt-6 lg:pt-8 border-t border-stone-300 max-w-4xl mx-auto lg:max-w-2xl lg:mx-0">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-stone-500 text-sm font-light space-y-4 sm:space-y-0">
-              <p className="italic">built with 2 hours of sleep and mild confusion</p>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/siddhikurne2662"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-stone-700 transition-colors"
-                >
-                  github
-                </a>
-                <a
-                  href="mailto:siddhi.s.kurne@gmail.com"
-                  className="hover:text-stone-700 transition-colors"
-                >
-                  email
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/siddhikurne"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-stone-700 transition-colors"
-                >
-                  linkedin
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* ── Page ── */}
+        <main
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateY(0)' : 'translateY(6px)',
+            transition: 'opacity 0.15s ease, transform 0.15s ease',
+            paddingBottom: 80,
+          }}
+        >
+          {page === 'home'     && <Home />}
+          {page === 'projects' && <Projects />}
+          {page === 'thoughts' && <Thoughts />}
+          {page === 'blog'     && <Blog />}
+        </main>
       </div>
-    </div>
+    </>
+  );
+};
+
+/* ── Animated name in nav ── */
+const NameTag = () => {
+  const full = 'sid kurne';
+  const [display, setDisplay] = useState('');
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      setDisplay(full.slice(0, i));
+      if (i >= full.length) { clearInterval(t); setDone(true); }
+    }, 80);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <span style={{
+      fontFamily: 'var(--serif)',
+      fontStyle: 'italic',
+      fontSize: 19,
+      fontWeight: 400,
+      color: 'var(--ink)',
+      letterSpacing: '-0.3px',
+    }}>
+      {display}
+      {!done && (
+        <span style={{ animation: 'blink 1s step-end infinite', display: 'inline-block' }}>
+          _
+          <style>{`@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`}</style>
+        </span>
+      )}
+    </span>
   );
 };
 

@@ -1,164 +1,167 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { mono, serif, ink, ink2, ink3, surface2, border, border2, Divider, SectionLabel, FooterNote } from './shared';
 
-const Home = () => {
-  const [displayText, setDisplayText] = useState("");
-  const fullText = "hey, i'm sid";
+const LINKS = [
+  { label: 'email',    href: 'mailto:siddhi.s.kurne2@gmail.com', display: 'siddhi.s.kurne2@gmail.com' },
+  { label: 'github',   href: 'https://github.com/siddhikurne2662',            display: 'github.com/siddhikurne2662' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/siddhikurne/',      display: 'linkedin.com/in/siddhikurne' },
+  { label: 'resume',   href: '#',                                              display: 'available on request' },
+];
 
-  useEffect(() => {
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < fullText.length) {
-        setDisplayText(fullText.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+const STATS = [
+  { num: '∞',   desc: 'unfinished ideas' },
+  { num: '3am', desc: 'peak brain hours' },
+  { num: '4+',  desc: 'coffees today' },
+];
 
-    return () => clearInterval(timer);
-  }, []);
+const Home = () => (
+  <div>
+    <h1 style={{
+      fontFamily: serif,
+      fontSize: 34,
+      fontWeight: 400,
+      fontStyle: 'italic',
+      color: 'var(--ink)',
+      lineHeight: 1.25,
+      marginBottom: 20,
+      letterSpacing: '-0.5px',
+    }}>
+      engineering student,<br />part-time sky archivist.
+    </h1>
 
-  return (
-    <div className="w-full" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-      {/* intro */}
-      <h2 className="text-3xl sm:text-4xl font-light mb-6 sm:mb-8 text-neutral-800">
-        {displayText}<span className="animate-pulse">|</span>
-      </h2>
+    <p style={{
+      fontFamily: mono,
+      fontSize: 12,
+      color: 'var(--ink2)',
+      lineHeight: 1.9,
+      marginBottom: 24,
+      maxWidth: 500,
+    }}>
+      i build things that occasionally work, take photos of clouds nobody asked
+      for, and have a gym membership that functions primarily as a source of guilt.
+      based in mumbai. surviving on coffee and 3am clarity.
+    </p>
 
-      <div className="space-y-4 sm:space-y-6 text-base sm:text-lg font-light">
-        <p className="text-neutral-600 leading-relaxed">
-          engineering student with way too many browser tabs open and a concerning amount of unfinished projects.
-          this is where they end up.
-        </p>
-
-        <div className="bg-neutral-100 border border-neutral-200 rounded-lg p-4 sm:p-6 my-6 sm:my-8">
-          <p className="text-neutral-700 leading-relaxed italic text-sm sm:text-base">
-            not a typical portfolio but my personal space. more like a digital record of ideas that seemed
-            genius at 2am but questionable in daylight. goto my linkedin for professionalism.
-          </p>
-        </div>
-
-        {/* status */}
-        <div className="flex flex-col sm:flex-row gap-3 my-4 sm:my-6">
-          <span className="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full border border-green-200 text-center">
-            ● probably online
-          </span>
-          <span className="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full border border-orange-200 text-center">
-            definitely procrastinating
-          </span>
-        </div>
-
-        {/* about section */}
-        <div className="border-t border-neutral-200 pt-6 sm:pt-8 mt-8 sm:mt-12">
-          <h3 className="text-xl sm:text-2xl font-light mb-4 sm:mb-6 text-neutral-800">
-            the person behind the mess who can be easily found on the socials
-          </h3>
-
-          <p className="text-neutral-600 leading-relaxed mb-4 text-sm sm:text-base">
-            started coding because someone said "it's easy money, use ai." spoiler alert: the money part
-            was a lie, but the addiction to solving problems at 3am was real.
-          </p>
-
-          <p className="text-neutral-600 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-            when not staring at screens, probably overthinking design choices or procrastinating the work.
-            got tired of the complex 3d uis, so decided to keep this simple. also, used ai, so judge all you want.
-          </p>
-
-          {/* skills grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 my-6 sm:my-8">
-            <div className="bg-neutral-100 border border-neutral-200 rounded-lg p-4">
-              <h4 className="text-neutral-800 font-medium mb-3">currently using</h4>
-              <div className="space-y-1 text-sm text-neutral-600">
-                <div>react (obviously)</div>
-                <div>tailwind css</div>
-                <div>javascript/typescript</div>
-                <div>git (badly)</div>
-                <div>figma (for procrastination)</div>
-              </div>
-            </div>
-
-            <div className="bg-neutral-100 border border-neutral-200 rounded-lg p-4">
-              <h4 className="text-neutral-800 font-medium mb-3">learning (struggling with)</h4>
-              <div className="space-y-1 text-sm text-neutral-600">
-                <div>three.js</div>
-                <div>backend stuff</div>
-                <div>node.js (why is everything async?)</div>
-                <div>proper git workflow</div>
-                <div>saying no to feature requests</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* timeline */}
-        <div className="border-t border-neutral-200 pt-6 sm:pt-8">
-          <h3 className="text-xl sm:text-2xl font-light mb-4 sm:mb-6 text-neutral-800">
-            how i ended up here
-          </h3>
-
-          <div className="space-y-3 text-sm sm:text-base text-neutral-600">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-1 sm:space-y-0">
-              <span className="font-medium">2023</span>
-              <span className="sm:text-right">the innocent beginning with html, css, and js</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-1 sm:space-y-0">
-              <span className="font-medium">2024</span>
-              <span className="sm:text-right">built first react project, broke everything twice</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-1 sm:space-y-0">
-              <span className="font-medium">2025</span>
-              <span className="sm:text-right">still here, somehow getting paid for this</span>
-            </div>
-          </div>
-        </div>
-
-        {/* stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6 sm:my-8">
-          <div className="text-center p-4 bg-neutral-100 rounded-lg border border-neutral-200">
-            <div className="text-2xl font-light text-neutral-800 mb-1">∞</div>
-            <div className="text-xs text-neutral-500">unfinished projects</div>
-          </div>
-          <div className="text-center p-4 bg-neutral-100 rounded-lg border border-neutral-200">
-            <div className="text-2xl font-light text-neutral-800 mb-1">3am</div>
-            <div className="text-xs text-neutral-500">usual coding time</div>
-          </div>
-          <div className="text-center p-4 bg-neutral-100 rounded-lg border border-neutral-200">
-            <div className="text-2xl font-light text-neutral-800 mb-1">404</div>
-            <div className="text-xs text-neutral-500">errors created daily</div>
-          </div>
-        </div>
-
-        {/* contact */}
-        <div className="border-t border-neutral-200 pt-6">
-          <h3 className="text-lg sm:text-xl font-light mb-4 text-neutral-800">
-            find me online (if you must)
-          </h3>
-
-          <div className="space-y-2 text-sm text-neutral-600">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-              <span className="text-neutral-500 sm:w-16 font-medium sm:font-normal">email</span>
-              <span>probably in my spam folder</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-              <span className="text-neutral-500 sm:w-16 font-medium sm:font-normal">github</span>
-              <span>where my code goes to die</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-              <span className="text-neutral-500 sm:w-16 font-medium sm:font-normal">linkedin</span>
-              <span>exists but i never check it</span>
-            </div>
-          </div>
-        </div>
-
-        {/* footer */}
-        <div className="mt-6 sm:mt-8 p-4 bg-neutral-100/50 border border-neutral-200 rounded-lg">
-          <p className="text-neutral-500 text-sm italic text-center leading-relaxed">
-            built with react, styled with tailwind, powered by my diet coke.
-          </p>
-        </div>
-      </div>
+    {/* status pills */}
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32 }}>
+      {[
+        { text: '● probably online', accent: '#3d9e6a' },
+        { text: 'definitely procrastinating', accent: null },
+        { text: 'adhd + ocd: the full combo', accent: null },
+      ].map(({ text, accent }) => (
+        <span key={text} style={{
+          fontFamily: mono,
+          fontSize: 11,
+          padding: '4px 12px',
+          border: `0.5px solid var(--border2)`,
+          borderRadius: 20,
+          color: accent ?? 'var(--ink2)',
+          background: 'var(--surface2)',
+          letterSpacing: '0.02em',
+        }}>
+          {text}
+        </span>
+      ))}
     </div>
-  );
-};
+
+    <Divider />
+    <SectionLabel>the actual info</SectionLabel>
+
+    {/* links grid */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '76px 1fr',
+      gap: '10px 20px',
+      alignItems: 'baseline',
+      marginBottom: 32,
+    }}>
+      {LINKS.map(({ label, href, display }) => (
+        <React.Fragment key={label}>
+          <span style={{ fontFamily: mono, fontSize: 10, letterSpacing: '0.12em', color: 'var(--ink3)', textTransform: 'uppercase' }}>
+            {label}
+          </span>
+          <a
+            href={href}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: mono,
+              fontSize: 12,
+              color: 'var(--ink)',
+              textDecoration: 'none',
+              borderBottom: `0.5px solid var(--border2)`,
+              paddingBottom: 1,
+              transition: 'border-color 0.15s, color 0.15s',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--ink2)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--ink)'; }}
+          >
+            {display}
+          </a>
+        </React.Fragment>
+      ))}
+    </div>
+
+    <Divider />
+    <SectionLabel>in brief</SectionLabel>
+
+    {[
+      `got into coding because someone said it was easy. it wasn't. stayed anyway because
+      there's something weirdly satisfying about breaking things and fixing them at 3am.`,
+      `hyperfocus for 6 hours straight or spend 40 minutes picking a spotify playlist.
+      adhd doesn't do in-between. add ocd and you get someone who checks the door lock
+      4 times but has zero folder structure.`,
+      `camera roll: 70% skies, 20% coffee, 10% accidental screenshots of notification
+      bars. no regrets. some of them are actually decent.`,
+    ].map((text, i) => (
+      <p key={i} style={{
+        fontFamily: mono,
+        fontSize: 12,
+        color: 'var(--ink2)',
+        lineHeight: 1.9,
+        marginBottom: 14,
+      }}>
+        {text}
+      </p>
+    ))}
+
+    {/* stats */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      border: `0.5px solid var(--border2)`,
+      borderRadius: 8,
+      overflow: 'hidden',
+      margin: '28px 0',
+    }}>
+      {STATS.map(({ num, desc }, i) => (
+        <div key={num} style={{
+          padding: '16px 12px',
+          textAlign: 'center',
+          borderRight: i < STATS.length - 1 ? `0.5px solid var(--border2)` : 'none',
+        }}>
+          <span style={{
+            fontFamily: serif,
+            fontSize: 24,
+            fontStyle: 'italic',
+            color: 'var(--ink)',
+            display: 'block',
+            marginBottom: 4,
+          }}>
+            {num}
+          </span>
+          <span style={{ fontFamily: mono, fontSize: 10, color: 'var(--ink3)', letterSpacing: '0.04em' }}>
+            {desc}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <FooterNote>
+      made with ai, and excessive diet coke.
+      if you're here for a resume, check linkedin. if you're here for chaos — welcome.
+    </FooterNote>
+  </div>
+);
 
 export default Home;
