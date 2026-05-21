@@ -2,7 +2,7 @@ import React from 'react';
 import { mono, serif, ink, ink2, ink3, surface2, border, border2, Divider, SectionLabel, FooterNote } from './shared';
 
 const LINKS = [
-  { label: 'email',    href: 'mailto:siddhi.s.kurne2@gmail.com', display: 'siddhi.s.kurne2@gmail.com' },
+  { label: 'email',    href: 'mailto:siddhi.s.kurne@gmail.com', display: 'siddhi.s.kurne@gmail.com' },
   { label: 'github',   href: 'https://github.com/siddhikurne2662',            display: 'github.com/siddhikurne2662' },
   { label: 'linkedin', href: 'https://www.linkedin.com/in/siddhikurne/',      display: 'linkedin.com/in/siddhikurne' },
   { label: 'resume',   href: '#',                                              display: 'available on request' },
