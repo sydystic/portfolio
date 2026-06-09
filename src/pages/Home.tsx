@@ -1,17 +1,17 @@
 import React from 'react';
-import { mono, serif, ink, ink2, ink3, surface2, border, border2, Divider, SectionLabel, FooterNote } from './shared';
+import { mono, serif, Divider, SectionLabel, FooterNote } from './shared';
 
 const LINKS = [
   { label: 'email',    href: 'mailto:siddhi.s.kurne@gmail.com', display: 'siddhi.s.kurne@gmail.com' },
-  { label: 'github',   href: 'https://github.com/siddhikurne2662',            display: 'github.com/siddhikurne2662' },
-  { label: 'linkedin', href: 'https://www.linkedin.com/in/siddhikurne/',      display: 'linkedin.com/in/siddhikurne' },
-  { label: 'resume',   href: '#',                                              display: 'available on request' },
+  { label: 'github',   href: 'https://github.com/sydystic',     display: 'github.com/sydystic' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/siddhikurne/', display: 'linkedin.com/in/siddhikurne' },
+  { label: 'resume',   href: '#',                               display: 'available on request' },
 ];
 
 const STATS = [
-  { num: '∞',   desc: 'unfinished ideas' },
-  { num: '3am', desc: 'peak brain hours' },
-  { num: '4+',  desc: 'coffees today' },
+  { num: '8+',  desc: 'projects shipped' },
+  { num: '2',   desc: 'internships' },
+  { num: '∞',   desc: 'tabs open' },
 ];
 
 const Home = () => (
@@ -26,7 +26,7 @@ const Home = () => (
       marginBottom: 20,
       letterSpacing: '-0.5px',
     }}>
-      engineering student,<br />part-time sky archivist.
+      engineering student,<br />building ai systems.
     </h1>
 
     <p style={{
@@ -37,17 +37,16 @@ const Home = () => (
       marginBottom: 24,
       maxWidth: 500,
     }}>
-      i build things that occasionally work, take photos of clouds nobody asked
-      for, and have a gym membership that functions primarily as a source of guilt.
-      based in mumbai. surviving on diet coke.
+      i build ai automation systems, agentic workflows, and full-stack products.
+      based in mumbai. usually working on something.
     </p>
 
     {/* status pills */}
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 32 }}>
       {[
         { text: '● probably online', accent: '#3d9e6a' },
-        { text: 'definitely procrastinating', accent: null },
-        { text: 'adhd + ocd: the full combo', accent: null },
+        { text: 'open to freelance', accent: null },
+        { text: 'building in ai-first space', accent: null },
       ].map(({ text, accent }) => (
         <span key={text} style={{
           fontFamily: mono,
@@ -106,13 +105,8 @@ const Home = () => (
     <SectionLabel>in brief</SectionLabel>
 
     {[
-      `got into coding because someone said it was easy. it wasn't. stayed anyway because
-      there's something weirdly satisfying about breaking things and fixing them at 3am.`,
-      `hyperfocus for 6 hours straight or spend 40 minutes picking a spotify playlist.
-      adhd doesn't do in-between. add ocd and you get someone who checks the door lock
-      4 times but has zero folder structure.`,
-      `camera roll: 70% skies, 20% coffee, 10% accidental screenshots of notification
-      bars. no regrets. some of them are actually decent.`,
+      `started coding, didn't stop. mostly work on ai systems, automation pipelines, and full-stack products. occasionally something ships.`,
+      `hyperfocus is the only mode. either deep in a build for hours or completely elsewhere. no in-between.`,
     ].map((text, i) => (
       <p key={i} style={{
         fontFamily: mono,
@@ -158,8 +152,7 @@ const Home = () => (
     </div>
 
     <FooterNote>
-      made with ai, and excessive diet coke.
-      if you're here for a resume, check linkedin. if you're here for chaos — welcome.
+      made with ai assistance. open to freelance and ai-first teams.
     </FooterNote>
   </div>
 );
