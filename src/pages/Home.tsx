@@ -2,16 +2,16 @@ import React from 'react';
 import { mono, serif, Divider, SectionLabel, FooterNote } from './shared';
 
 const LINKS = [
-  { label: 'email',    href: 'mailto:siddhi.s.kurne@gmail.com', display: 'siddhi.s.kurne@gmail.com' },
+  { label: 'email',    href: 'mailto:sydystic.dev@gmail.com', display: 'sydystic.dev@gmail.com' },
   { label: 'github',   href: 'https://github.com/sydystic',     display: 'github.com/sydystic' },
   { label: 'linkedin', href: 'https://www.linkedin.com/in/siddhikurne/', display: 'linkedin.com/in/siddhikurne' },
   { label: 'resume',   href: '#',                               display: 'available on request' },
 ];
 
 const STATS = [
-  { num: '8+',  desc: 'projects shipped' },
-  { num: '2',   desc: 'internships' },
-  { num: '∞',   desc: 'tabs open' },
+  { num: '8+', desc: 'things built' },
+    { num: '0', desc: 'backup plans' },
+        { num: 'low', desc: 'morning tolerance' },
 ];
 
 const Home = () => (

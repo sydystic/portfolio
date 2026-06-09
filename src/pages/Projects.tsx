@@ -39,15 +39,6 @@ const PROJECTS: Project[] = [
     stack: 'html / markitdown / python',
   },
   {
-    title: 'msbte result monitor',
-    description:
-      'automated monitoring system that tracks the msbte results portal and notifies users via email when new results are published.',
-    year: '2026',
-    link: 'https://github.com/sydystic/msbte-result-monitor',
-    status: 'live',
-    stack: 'node.js / puppeteer / nodemailer',
-  },
-  {
     title: 'resumecraft',
     description:
       'ai-powered resume builder with ats scoring, live preview, pdf export, and intelligent resume suggestions.',
@@ -73,15 +64,6 @@ const PROJECTS: Project[] = [
     link: 'https://github.com/sydystic/SyncTwin',
     status: 'experimental',
     stack: 'three.js / react',
-  },
-  {
-    title: 'moviedb',
-    description:
-      'imdb-inspired movie discovery platform with search, ratings, and responsive ui built on the tmdb api.',
-    year: '2025',
-    link: 'https://sidsmoviedb.netlify.app',
-    status: 'live',
-    stack: 'react / tailwind / vite',
   },
 ];
 
@@ -119,7 +101,7 @@ const Projects = () => (
       marginBottom: 28,
       maxWidth: 580,
     }}>
-      ai systems, automation pipelines, and products. built to solve real problems.
+      ai systems, automation pipelines, and products. trying to solve real problems.
     </p>
 
     {/* socials */}

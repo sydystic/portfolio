@@ -7,68 +7,34 @@ interface Thought {
   mood: string;
 }
 
-const THOUGHTS: Thought[] = [
-  {
-    content: 'adhd means either hyperfocusing on code for 8 hours straight or spending 45 minutes deciding which spotify playlist to work to. no in-between, no warning.',
-    date: 'oct 2025',
-    mood: 'accurate',
-  },
-  {
-    content: 'the gym membership i pay for vs the gym i actually go to are two completely different concepts. schrödinger\'s workout.',
-    date: 'sep 2025',
-    mood: 'guilty',
-  },
-  {
-    content: 'ocd is weird. can\'t leave the house without checking the door lock 4 times. my code organisation? absolute chaos. pick a struggle.',
-    date: 'aug 2025',
-    mood: 'ironic',
-  },
-  {
-    content: 'i spend more time organising notion than actually doing the tasks in notion. productivity is a spectrum and i\'m on the decorative end.',
-    date: 'jul 2025',
-    mood: 'called out',
-  },
-  {
-    content: 'taking photos of the sky is cheaper than therapy. the results are just as unclear.',
-    date: 'jun 2025',
-    mood: 'philosophical',
-  },
-  {
-    content: 'coffee dependency isn\'t a personality trait. anyway, fourth cup and it\'s only 2pm.',
-    date: 'may 2025',
-    mood: 'caffeinated',
-  },
-  {
-    content: 'procrastination is just anxiety with better marketing. why do the thing now when you can panic about it at midnight?',
-    date: 'apr 2025',
-    mood: 'relatable',
-  },
-  {
-    content: 'using ai for code doesn\'t make you less of a developer. it\'s like having google but it actually understands your vague questions.',
-    date: 'mar 2025',
-    mood: 'defensive',
-  },
-  {
-    content: 'every project starts with \'this will be quick\' and ends with \'why did i think this was a good idea at 2am?\'',
-    date: 'jan 2025',
-    mood: 'regret',
-  },
-  {
-    content: 'some people have spotify wrapped. i have 47 browser tabs of articles i\'ll \'definitely read later\'.',
-    date: 'feb 2025',
-    mood: 'exposed',
-  },
-  {
-    content: 'overthinking is a full-time job and i\'m employee of the month, every month.',
-    date: 'dec 2024',
-    mood: 'exhausted',
-  },
-  {
-    content: 'the gym bro energy vs the \'walked to the kitchen 5 times today\' energy. balance.',
-    date: 'nov 2024',
-    mood: 'trying',
-  },
+const THOUGHTS = [
+{
+  content: 'most things work out eventually, even if it doesn\'t feel like it at the time.',
+  date: 'jan 2026',
+  mood: 'life',
+},
+{
+content: 'high cortisol level.',
+date: 'march 2026',
+mood: 'routine',
+},
+{
+content: 'not a morning person. peak productivity between 12pm and 6pm.',
+date: 'dec 2025',
+mood: 'daily',
+},
+{
+content: 'ai is a life saver.',
+date: 'aug 2025',
+mood: 'useful',
+},
+{
+content: 'adhd and ocd occasionally feel like two people trying to use the same keyboard.',
+date: 'jul 2025',
+mood: 'observed',
+},
 ];
+
 
 const ThoughtItem = ({ thought, index }: { thought: Thought; index: number }) => {
   const [hovered, setHovered] = useState(false);
@@ -199,7 +165,7 @@ const Thoughts = () => (
     </div>
 
     <FooterNote style={{ marginTop: 32 }}>
-      these hit different at 3am. daytime sid has concerns about nighttime sid's decision-making.
+      suppressing emotions led to memory loss, so half of the thoughts are dumped in my brain.
     </FooterNote>
   </div>
 );

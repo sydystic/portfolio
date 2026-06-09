@@ -28,144 +28,110 @@ interface Post {
 // ─────────────────────────────────────────────
 
 const POSTS: Post[] = [
-  // ───────────────── Essays ─────────────────
-
   {
-    slug: 'on-shipping',
+    slug: 'most-things-work-out',
     type: 'essay',
-    title: 'on shipping imperfect things',
-    subtitle:
-      'done beats perfect. i needed reminding.',
-    date: 'sep 2025',
-    readTime: '3 min',
-    tag: 'dev',
-    body: `i have a folder called "projects" that contains roughly forty ideas in various states of incompleteness.
-
-some are just a readme. some are halfway-built UIs with no backend. some are full backends with no frontend, which is backwards but here we are.
-
-the thing that actually gets finished is the thing with a deadline or a real person waiting for it.
-
-i used to think this was a discipline problem. i don't think that anymore. i think it's a stakes problem.
-
-when a project is just for me, the bar for "good enough to share" keeps moving. when someone's actually waiting — a client, a friend, anyone — the bar becomes concrete.
-
-the lesson i keep learning and forgetting: ship the imperfect version.
-
-you learn more from one deployed thing than ten perfect-in-your-head things.
-
-put it out. fix it after. the alternative is a very organised folder of things nobody ever saw.`,
-  },
-
-  {
-    slug: 'why-i-code',
-    type: 'essay',
-    title: 'why i still code at 3am',
-    subtitle:
-      "it's not dedication. it's something weirder.",
-    date: 'nov 2025',
-    readTime: '3 min',
-    tag: 'meta',
-    body: `nobody tells you that the best debugging sessions happen when you're running on fumes and your sixth coffee has gone cold on the desk.
-
-there's something about 3am that strips out the noise.
-
-no slack pings. no notifications. no pressure to look productive. just you and the problem.
-
-i don't think i'm naturally a night owl. i think the daytime just has too many things competing for attention.
-
-when the world quiets down, my brain finally decides to cooperate.
-
-hyperfocus is weird like that. when it hits, six hours disappear instantly. when it doesn't, you'll spend an hour staring at a blank file wondering why divs suddenly stopped making sense.
-
-that's the real answer.
-
-not productivity culture. not hustle culture.
-
-just finding the hours where my brain works best and building around them.`,
-  },
-
-  // ───────────────── Devlogs ─────────────────
-
-  {
-    slug: 'devlog-cloudpilot',
-    type: 'devlog',
-    title:
-      'building cloudpilot: ai workflows that actually do things',
-    subtitle:
-      'turning messy emails, llms, and automations into usable systems.',
-    date: 'may 2026',
-    readTime: '6 min',
-    tag: 'devlog',
-    stack: ['Next.js', 'n8n', 'docker', 'Supabase', 'LLM'],
-    outcome: 'actively building',
-    link: 'https://github.com/siddhikurne2662/cloudpilot-dashboard',
-    body: `## the original problem
-
-i kept noticing the same thing everywhere: people spend ridiculous amounts of time moving information between tools manually.
-
-emails become tasks. tasks become spreadsheets. spreadsheets become reminders.
-
-most workflows are just humans acting as middleware.
-
-cloudpilot started as an attempt to reduce that friction.
-
-## where n8n actually helped
-
-i didn't want to build any basic automation.
-
-the useful part of n8n is it's decision-making inside workflows.
-
-it was reliability.
-
-## what i learned
-
-automation products live or die by trust.
-
-users can tolerate occasional bugs. they cannot tolerate uncertainty about whether the workflow actually executed correctly.
-
-observability matters more than aesthetics.`,
-  },
-
-  {
-    slug: 'devlog-resumecraft',
-    type: 'devlog',
-    title:
-      'building resumecraft: resumes without the corporate cringe',
-    subtitle:
-      'trying to make resume builders feel less like government forms.',
-    date: 'apr 2026',
+    title: 'most things work out eventually',
+    subtitle: 'the timeline is usually the surprising part.',
+    date: 'jun 2026',
     readTime: '2 min',
+    tag: 'life',
+    body: `for a long time i thought everyone else had a plan.
+
+career plan. life plan. five-year plan.
+
+turns out most people are just making reasonable decisions with the information they have at the time.
+
+some projects worked. some didn't.
+
+some opportunities showed up late.
+
+some showed up when i wasn't ready.
+
+life feels less like a roadmap and more like walking through fog.
+
+you don't see the whole thing.
+
+you just see enough to take the next step.
+
+that's usually enough.`,
+  },
+
+  {
+slug: 'building-cloudpilot',
+type: 'devlog',
+title: 'building cloudpilot',
+subtitle: 'making cloud services less intimidating for people who shouldn’t need a cloud certification.',
+date: 'may 2026',
+readTime: '4 min',
+tag: 'devlog',
+stack: ['Next.js', 'n8n', 'Docker', 'Supabase'],
+outcome: 'actively building',
+link: 'https://github.com/siddhikurne2662/cloudpilot-dashboard',
+body: `## why i started it
+
+cloud services are powerful.
+
+they're also full of dashboards.
+
+if all you want to do is manage a service, jumping between provider consoles gets old quickly.
+
+cloudpilot started as an attempt to put the things people actually use into one place.
+
+## what i'm building
+
+the idea is simple.
+
+a dashboard that lets users interact with cloud services without spending half their time inside cloud consoles.
+
+less navigation. less context switching. fewer tabs.
+
+## things i've learned
+
+most of the work isn't the dashboard. it's everything around it.
+
+authentication. permissions. webhooks. integrations.
+
+the parts users never see usually take the longest to get right.
+
+that's been true for almost every feature so far.`
+
+},
+
+
+  {
+    slug: 'exploring-llms',
+    type: 'devlog',
+    title: 'currently exploring llms',
+    subtitle: 'trying to separate useful systems from impressive demos.',
+    date: 'jun 2026',
+    readTime: '3 min',
     tag: 'devlog',
-    stack: ['Next.js', 'Tailwind', 'Firebase', 'Google APIs'],
-    outcome: 'live product',
-    link: 'https://github.com/siddhikurne2662/resume-builder-saas',
-    body: `## why i built it
+    stack: ['LLMs', 'RAG', 'Agents', 'Evaluation'],
+    outcome: 'researching',
+    body: `## current rabbit hole
 
-most resume builders either look outdated or generate resumes that sound completely artificial.
+lately i've been spending most of my time exploring llms, rag systems, agents, and evaluation.
 
-everything becomes:
-"highly motivated individual with strong communication skills."
+every week there seems to be a new framework.
 
-which is recruiter repellent at this point.
+half of them disappear before i finish reading the documentation.
 
-i wanted to build something faster, cleaner, and more modern.
+## what interests me
 
-## live preview changed everything
+not bigger models. better systems. retrieval. memory. tool use. reliability.
 
-people write better when they immediately see formatting and hierarchy updating beside the editor.
+the boring parts are usually where the real work happens.
 
-small ux feedback loops dramatically improved the experience.
+## current conclusion
 
-instead of filling out forms, it started feeling like building a polished profile.
+llms are impressive.
 
-## what i learned
+making them consistently useful is still the interesting problem.
 
-resume builders are secretly ux products.
-
-the technology matters less than reducing friction and helping users feel confident while writing about themselves.`,
+that's probably where i'll keep spending my time.`,
   },
 ];
-
 // ─────────────────────────────────────────────
 // Tag config
 // ─────────────────────────────────────────────
@@ -516,10 +482,8 @@ const Blog = () => {
           </div>
 
           <FooterNote style={{ marginTop: 40 }}>
-            {POSTS.filter(p => p.type === 'essay').length} essays ·{' '}
-            {POSTS.filter(p => p.type === 'devlog').length} devlogs ·{' '}
-            more when the 3am clarity strikes.
-          </FooterNote>
+  1 essay · 2 devlogs · written when something felt worth writing down.
+</FooterNote>
         </>
       )}
     </div>
